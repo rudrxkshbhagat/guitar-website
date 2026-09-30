@@ -6,9 +6,9 @@
     <title>Let's Learn Guitar | Classes & Store</title>
     <style>
         :root {
-            --primary: #1a1a1a;
+            --primary: #660080;
             --accent: #e74c3c;
-            --bg: #f4f4f4;
+            --bg: #f8f9fa;
             --card-bg: #ffffff;
             --text: #333333;
             --border: #e0e0e0;
@@ -23,17 +23,17 @@
             scroll-behavior: smooth;
         }
 
-        /* Top Clean Navigation Bar */
+        /* Top Clean Navigation Bar with #660080 background */
         nav.top-bar {
-            background: #ffffff;
+            background: #660080;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0.6rem 1.2rem;
-            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
 
         .nav-left {
@@ -57,7 +57,7 @@
             display: block;
             height: 2px;
             width: 100%;
-            background-color: var(--text);
+            background-color: #ffffff;
             border-radius: 2px;
         }
 
@@ -70,26 +70,26 @@
         }
         .nav-links a {
             text-decoration: none;
-            color: var(--text);
+            color: #ffffff;
             font-size: 0.9rem;
             font-weight: 500;
         }
         .nav-links a:hover {
-            color: var(--accent);
+            color: #ffcccc;
         }
 
         @media(min-width: 768px) {
             .nav-links { display: flex; }
         }
 
-        /* Clickable Logo Image */
+        /* Clickable Transparent Logo Image */
         .logo-container {
             display: flex;
             align-items: center;
             text-decoration: none;
         }
         .site-logo {
-            max-height: 38px;
+            max-height: 42px;
             width: auto;
             object-fit: contain;
         }
@@ -105,7 +105,7 @@
             cursor: pointer;
             font-size: 1.1rem;
             text-decoration: none;
-            color: var(--text);
+            color: #ffffff;
         }
 
         /* Slideshow Banner Styles */
@@ -144,7 +144,7 @@
             cursor: pointer;
         }
         .dot.active {
-            background-color: var(--accent);
+            background-color: var(--primary);
         }
 
         .container {
@@ -184,13 +184,13 @@
         .owner-photo {
             width: 100%;
             max-width: 200px;
-            height: 260px; /* Portrait aspect ratio */
+            height: 260px;
             background: #ddd;
             border-radius: 12px;
             margin: 0 auto 0.5rem;
             display: block;
             object-fit: cover;
-            border: 3px solid var(--accent);
+            border: 3px solid var(--primary);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .owner-name {
@@ -237,7 +237,7 @@
             flex-direction: column;
             flex-grow: 1;
         }
-        .guitar-info h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--primary); }
+        .guitar-info h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: #1a1a1a; }
         .price {
             font-size: 1.1rem;
             font-weight: bold;
@@ -269,7 +269,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
-            text-align: center;
+            align-items: center;
         }
         @media(min-width: 600px) {
             .classes-grid { grid-template-columns: 1fr 1fr; }
@@ -279,6 +279,7 @@
             padding: 1.5rem;
             border-radius: 6px;
             border: 1px solid #ddd;
+            text-align: center;
         }
         .btn {
             display: inline-block;
@@ -290,9 +291,77 @@
             font-weight: bold;
             margin-top: 0.5rem;
         }
-        .btn-insta {
-            background: #E1306C;
-            margin-top: 0.5rem;
+
+        /* Instagram Link Preview Card style */
+        .insta-preview-card {
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            background: #fff;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 1rem;
+        }
+        .insta-preview-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .insta-preview-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            gap: 10px;
+            border-bottom: 1px solid #efefef;
+            background: #fafafa;
+        }
+        .insta-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-divider;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5950 45%, #c62368 60%, #fa7e1e 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .insta-handle {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #262626;
+        }
+        .insta-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: #262626;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .insta-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .insta-footer {
+            padding: 10px 12px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #fff;
+        }
+        .insta-footer strong {
+            color: #262626;
+            display: block;
+            margin-bottom: 2px;
         }
 
         /* Floating WhatsApp Sticker */
@@ -325,7 +394,7 @@
         footer {
             text-align: center;
             padding: 2rem 1rem;
-            background: var(--primary);
+            background: #660080;
             color: white;
             font-size: 0.9rem;
         }
@@ -350,9 +419,9 @@
             </ul>
         </div>
 
-        <!-- Clickable Logo Image -->
+        <!-- Clickable Transparent Logo Image -->
         <a href="#home" class="logo-container">
-            <img src="logo.png" alt="Logo" class="site-logo">
+            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/logo%20trans.png?raw=true" alt="Logo" class="site-logo">
         </a>
 
         <div class="nav-right-icons">
@@ -382,7 +451,7 @@
 
     <div class="container">
 
-        <!-- Guitar Store Catalog (Moved Above) -->
+        <!-- Guitar Store Catalog -->
         <section id="catalog">
             <h2>Guitar Catalog & Store</h2>
             <div class="store-notice">
@@ -425,7 +494,7 @@
             </div>
         </section>
 
-        <!-- About & Owner Section (Moved Below Catalog) -->
+        <!-- About & Owner Section with Instagram Preview Card -->
         <section id="about">
             <h2>About The Institute & Owner</h2>
             <div class="about-grid">
@@ -437,6 +506,21 @@
                     <p><strong>Welcome to Let's Learn Guitar!</strong> Founded out of pure passion for music, our institute serves as both a dedicated guitar learning hub and a specialized music store.</p>
                     <p><strong>Our Motive:</strong> We believe that anyone can master the fretboard with the right guidance. Alongside structured lessons tailored to every skill level, we handpick quality guitars so students and enthusiasts get the best acoustics and playability.</p>
                     <p><strong>Location:</strong> C-27 Opposite Shiv Mandir Shivalik Nagar, Haridwar, Uttarakhand</p>
+                    
+                    <!-- Instagram Preview Card -->
+                    <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
+                        <div class="insta-preview-header">
+                            <div class="insta-avatar">IG</div>
+                            <div class="insta-handle">letslearnguitarclasses</div>
+                        </div>
+                        <div class="insta-thumbnail">
+                            📷 Tap to view our Instagram page & student updates
+                        </div>
+                        <div class="insta-footer">
+                            <strong>Let's Learn Guitar Classes</strong>
+                            View student progress, tips, and guitar sessions on Instagram.
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -446,15 +530,27 @@
             <h2>Guitar Classes & Inquiries</h2>
             <div class="classes-grid">
                 <div>
-                    <h3 style="color: var(--primary); margin-top: 0;">Learn From the Experts</h3>
-                    <p>Whether you're picking up a guitar for the first time or want to level up your technique, our classes cover chords, scales, theory, and your favorite songs.</p>
-                    <p>Stay updated with our latest student progress, tips, and studio updates on Instagram:</p>
-                    <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="btn btn-insta">Visit Instagram Page</a>
+                    <p style="margin-top: 0; color: #555;">Scan the QR code or use our quick form for class admissions and instrument availability inquiries.</p>
+                    
+                    <!-- Instagram Preview Card for Classes Section -->
+                    <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
+                        <div class="insta-preview-header">
+                            <div class="insta-avatar">IG</div>
+                            <div class="insta-handle">letslearnguitarclasses</div>
+                        </div>
+                        <div class="insta-thumbnail">
+                            🎸 Explore Daily Practice Reels & Community
+                        </div>
+                        <div class="insta-footer">
+                            <strong>Follow us on Instagram</strong>
+                            Stay connected with our latest studio activities.
+                        </div>
+                    </a>
                 </div>
                 
                 <div class="qr-box">
                     <h3 style="color: var(--primary); margin-top: 0;">Quick Inquiry QR Code</h3>
-                    <p style="font-size: 0.9rem;">Scan with your phone camera or click below to fill out our Google Form for class admissions or guitar availability.</p>
+                    <p style="font-size: 0.9rem;">Scan with your phone camera or click below to fill out our Google Form.</p>
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/w8U1Zzk7uMf3HA4D9" alt="Google Form QR Code" style="border: 3px solid white; border-radius: 4px;">
                     <br>
                     <a href="https://forms.gle/w8U1Zzk7uMf3HA4D9" target="_blank" class="btn">Open Google Form</a>
