@@ -40,6 +40,7 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
+            position: relative;
         }
 
         .menu-btn {
@@ -61,35 +62,66 @@
             border-radius: 2px;
         }
 
+        /* Functional Dropdown Menu for Mobile & Laptop */
         .nav-links {
             display: none;
-            gap: 1.2rem;
+            flex-direction: column;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background: #660080;
+            min-width: 180px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-radius: 6px;
             list-style: none;
             margin: 0;
-            padding: 0;
+            padding: 0.5rem 0;
+            z-index: 1100;
         }
-        .nav-links a {
+        .nav-links.show {
+            display: flex;
+        }
+        .nav-links li a {
             text-decoration: none;
             color: #ffffff;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            display: block;
         }
-        .nav-links a:hover {
+        .nav-links li a:hover {
+            background: rgba(255,255,255,0.1);
             color: #ffcccc;
         }
 
         @media(min-width: 768px) {
-            .nav-links { display: flex; }
+            .menu-btn { display: none; }
+            .nav-links {
+                display: flex !important;
+                flex-direction: row;
+                position: static;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+                gap: 1.2rem;
+            }
+            .nav-links li a {
+                padding: 0;
+            }
+            .nav-links li a:hover {
+                background: transparent;
+                color: #ffcccc;
+            }
         }
 
-        /* Clickable Transparent Logo Image */
+        /* Clickable Transparent Logo Image (Properly Sized & Clean) */
         .logo-container {
             display: flex;
             align-items: center;
             text-decoration: none;
         }
         .site-logo {
-            max-height: 42px;
+            max-height: 55px;
             width: auto;
             object-fit: contain;
         }
@@ -292,7 +324,7 @@
             margin-top: 0.5rem;
         }
 
-        /* Instagram Link Preview Card style */
+        /* Instagram Thumbnail Preview Card (Like YouTube Video Thumbnail) */
         .insta-preview-card {
             border: 1px solid #dbdbdb;
             border-radius: 8px;
@@ -321,7 +353,6 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            background: linear-divider;
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5950 45%, #c62368 60%, #fa7e1e 90%);
             display: flex;
             align-items: center;
@@ -335,25 +366,19 @@
             font-size: 0.9rem;
             color: #262626;
         }
-        .insta-thumbnail {
+        .insta-thumbnail-container {
             width: 100%;
-            height: 180px;
-            background: #262626;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.9rem;
+            height: 220px;
+            background: #eaeaea;
             position: relative;
-            overflow: hidden;
         }
-        .insta-thumbnail img {
+        .insta-thumbnail-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         .insta-footer {
-            padding: 10px 12px;
+            padding: 12px;
             font-size: 0.85rem;
             color: #666;
             background: #fff;
@@ -362,6 +387,7 @@
             color: #262626;
             display: block;
             margin-bottom: 2px;
+            font-size: 0.95rem;
         }
 
         /* Floating WhatsApp Sticker */
@@ -405,17 +431,17 @@
     <!-- Top Navigation Bar -->
     <nav class="top-bar">
         <div class="nav-left">
-            <button class="menu-btn" onclick="alert('Menu options opened!')" aria-label="Menu">
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About The Institute</a></li>
-                <li><a href="#catalog">Guitar Catalog</a></li>
-                <li><a href="#classes">Classes</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#about" onclick="toggleMenu()">About The Institute</a></li>
+                <li><a href="#catalog" onclick="toggleMenu()">Guitar Catalog</a></li>
+                <li><a href="#classes" onclick="toggleMenu()">Classes</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
             </ul>
         </div>
 
@@ -494,7 +520,7 @@
             </div>
         </section>
 
-        <!-- About & Owner Section with Instagram Preview Card -->
+        <!-- About & Owner Section with Instagram Thumbnail Card -->
         <section id="about">
             <h2>About The Institute & Owner</h2>
             <div class="about-grid">
@@ -507,18 +533,18 @@
                     <p><strong>Our Motive:</strong> We believe that anyone can master the fretboard with the right guidance. Alongside structured lessons tailored to every skill level, we handpick quality guitars so students and enthusiasts get the best acoustics and playability.</p>
                     <p><strong>Location:</strong> C-27 Opposite Shiv Mandir Shivalik Nagar, Haridwar, Uttarakhand</p>
                     
-                    <!-- Instagram Preview Card -->
+                    <!-- Instagram Preview Card with Real Image Thumbnail -->
                     <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
                         <div class="insta-preview-header">
                             <div class="insta-avatar">IG</div>
                             <div class="insta-handle">letslearnguitarclasses</div>
                         </div>
-                        <div class="insta-thumbnail">
-                            📷 Tap to view our Instagram page & student updates
+                        <div class="insta-thumbnail-container">
+                            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20g1.jpg?raw=true" alt="Instagram Post Thumbnail">
                         </div>
                         <div class="insta-footer">
                             <strong>Let's Learn Guitar Classes</strong>
-                            View student progress, tips, and guitar sessions on Instagram.
+                            Tap to view student progress, tips, and guitar sessions on Instagram.
                         </div>
                     </a>
                 </div>
@@ -532,18 +558,18 @@
                 <div>
                     <p style="margin-top: 0; color: #555;">Scan the QR code or use our quick form for class admissions and instrument availability inquiries.</p>
                     
-                    <!-- Instagram Preview Card for Classes Section -->
+                    <!-- Instagram Preview Card for Classes Section with Real Image Thumbnail -->
                     <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
                         <div class="insta-preview-header">
                             <div class="insta-avatar">IG</div>
                             <div class="insta-handle">letslearnguitarclasses</div>
                         </div>
-                        <div class="insta-thumbnail">
-                            🎸 Explore Daily Practice Reels & Community
+                        <div class="insta-thumbnail-container">
+                            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20g2.jpg?raw=true" alt="Instagram Post Thumbnail">
                         </div>
                         <div class="insta-footer">
                             <strong>Follow us on Instagram</strong>
-                            Stay connected with our latest studio activities.
+                            Stay connected with our latest studio activities & reels.
                         </div>
                     </a>
                 </div>
@@ -572,8 +598,15 @@
         <p>&copy; 2026 Let's Learn Guitar. All rights reserved.</p>
     </footer>
 
-    <!-- Slideshow Script -->
+    <!-- Scripts for Menu Toggle & Slideshow -->
     <script>
+        // Hamburger Menu Function
+        function toggleMenu() {
+            let menu = document.getElementById("navMenu");
+            menu.classList.toggle("show");
+        }
+
+        // Slideshow Script
         let slideIndex = 0;
         showSlides();
 
