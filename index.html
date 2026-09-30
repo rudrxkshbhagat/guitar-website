@@ -11,6 +11,7 @@
             --bg: #f4f4f4;
             --card-bg: #ffffff;
             --text: #333333;
+            --border: #e0e0e0;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,39 +21,61 @@
             color: var(--text);
             line-height: 1.6;
         }
-        header {
-            background: #5b21b6;
-            color: white;
-            text-align: center;
-            padding: 2.5rem 1rem 2rem;
-            border-bottom: 4px solid var(--accent);
+
+        /* Top Navigation Bar */
+        nav.top-bar {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        /* Logo styling for A4 landscape PNG */
-        .site-logo {
-            max-height: 70px;
-            width: auto;
-            max-width: 100%;
-            object-fit: contain;
-            margin-bottom: 0.75rem;
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            padding: 0;
+        }
+        .menu-btn span {
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            height: 2px;
+            width: 100%;
+            background-color: var(--text);
+            border-radius: 2px;
         }
-        header h1 { 
-            margin: 0; 
-            font-size: 2.5rem; 
-            letter-spacing: 2px; 
-            font-family: 'Georgia', serif; 
-            font-style: italic;
-            text-transform: uppercase;
-            color: white; 
-            text-align: center; 
+
+        /* Logo styling in navbar */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
         }
-        header p { 
-            margin: 0.5rem auto 0; 
-            font-size: 1.1rem; 
-            color: #e9d5ff; 
-            text-align: center; 
+        .site-logo {
+            max-height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-right-icons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
         }
 
         .container {
@@ -98,8 +121,8 @@
             justify-content: center;
             color: #777;
             font-size: 0.9rem;
-            border: 4px solid var(--accent);
             object-fit: cover;
+            border: 4px solid var(--accent);
         }
 
         /* Catalog Grid */
@@ -131,11 +154,6 @@
             width: 100%;
             height: 240px;
             background: #eaeaea;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 0.85rem;
             object-fit: cover;
         }
         .guitar-info {
@@ -213,12 +231,25 @@
 </head>
 <body>
 
-    <header>
-        <!-- Your Inkscape Logo File Uploaded to GitHub as logo.png -->
-        <img src="logo.png" alt="Let's Learn Guitar Logo" class="site-logo">
-        <h1>Let's Learn Guitar</h1>
-        <p>Professional Guitar Classes & Premium Store</p>
-    </header>
+    <!-- Header Navigation Bar -->
+    <nav class="top-bar" id="home">
+        <!-- 3 Dots / Hamburger Menu Button -->
+        <button class="menu-btn" onclick="alert('Menu options opened!')" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Clickable Logo Image (Takes you back to top/home) -->
+        <a href="#home" class="logo-container">
+            <img src="logo.png" alt="Let's Learn Guitar Logo" class="site-logo">
+        </a>
+
+        <!-- Right Side Icons -->
+        <div class="nav-right-icons">
+            <button class="icon-btn" onclick="alert('Search clicked!')">🔍</button>
+        </div>
+    </nav>
 
     <div class="container">
 
@@ -254,9 +285,9 @@
                     </div>
                 </div>
 
-                <!-- Guitar Item 2 -->
+                <!-- Guitar Item 2 (Fixed Link) -->
                 <div class="guitar-card">
-                    <img src="https://github.com/yamaha%20f280c.jpg?raw=true" alt="Yamaha F280 Acoustic Guitar" class="guitar-img" onerror="this.src='https://github.com/rudrxkshbhagat/guitar-website/blob/main/yamaha%20f280c.jpg?raw=true'">
+                    <img src="https://raw.githubusercontent.com/rudrxkshbhagat/guitar-website/main/yamaha%20f280c.jpg" alt="Yamaha F280 Acoustic Guitar" class="guitar-img">
                     <div class="guitar-info">
                         <h3>Classic Nylon Concert</h3>
                         <p style="font-size: 0.85rem; color: #666; margin: 0 0 0.5rem;">Soft strings, mellow sound for fingerstyle.</p>
