@@ -200,7 +200,7 @@
             margin-top: 0; 
         }
 
-        /* About / Owner Section */
+        /* About / Owner Section (Full Original Ratio Photo Fix) */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -215,13 +215,14 @@
         }
         .owner-photo {
             width: 100%;
-            max-width: 200px;
-            height: 260px;
-            background: #ddd;
+            max-width: 220px;
+            height: auto;
+            max-height: 320px;
+            background: #eaeaea;
             border-radius: 12px;
             margin: 0 auto 0.5rem;
             display: block;
-            object-fit: cover;
+            object-fit: contain; /* Keeps original aspect ratio completely uncropped */
             border: 3px solid var(--primary);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
@@ -324,7 +325,7 @@
             margin-top: 0.5rem;
         }
 
-        /* Instagram Thumbnail Preview Card (Full Original Ratio Fixed) */
+        /* Instagram Thumbnail Preview Card */
         .insta-preview-card {
             border: 1px solid #dbdbdb;
             border-radius: 8px;
@@ -378,7 +379,7 @@
             width: 100%;
             height: auto;
             max-height: 400px;
-            object-fit: contain; /* Keeps original aspect ratio without zooming/cropping */
+            object-fit: contain;
             display: block;
         }
         .insta-footer {
@@ -524,12 +525,12 @@
             </div>
         </section>
 
-        <!-- About & Owner Section with Instagram Thumbnail Card -->
+        <!-- About & Owner Section with Full Uncropped Photo -->
         <section id="about">
             <h2>About The Institute & Owner</h2>
             <div class="about-grid">
                 <div class="owner-container">
-                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/20230820_112448(1).jpg?raw=true" alt="Rudraksh Bhagat" class="owner-photo">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/DPP.jpg?raw=true" alt="Rudraksh Bhagat" class="owner-photo">
                     <div class="owner-name">Rudraksh Bhagat</div>
                 </div>
                 <div>
@@ -537,7 +538,7 @@
                     <p><strong>Our Motive:</strong> We believe that anyone can master the fretboard with the right guidance. Alongside structured lessons tailored to every skill level, we handpick quality guitars so students and enthusiasts get the best acoustics and playability.</p>
                     <p><strong>Location:</strong> C-27 Opposite Shiv Mandir Shivalik Nagar, Haridwar, Uttarakhand</p>
                     
-                    <!-- Instagram Preview Card with Correct Screenshot Thumbnail -->
+                    <!-- Instagram Preview Card -->
                     <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
                         <div class="insta-preview-header">
                             <div class="insta-avatar">IG</div>
@@ -555,14 +556,14 @@
             </div>
         </section>
 
-        <!-- Guitar Classes & QR Code -->
+        <!-- Guitar Classes & QR Code (Updated Contextual Text) -->
         <section id="classes">
             <h2>Guitar Classes & Inquiries</h2>
             <div class="classes-grid">
                 <div>
-                    <p style="margin-top: 0; color: #555;">Scan the QR code or use our quick form for class admissions and instrument availability inquiries.</p>
+                    <p style="margin-top: 0; color: #555;">Ready to start your musical journey? Connect with us through our quick inquiry form, explore instrument availability, or check out our latest student progress and video reels on Instagram.</p>
                     
-                    <!-- Instagram Preview Card for Classes Section with Correct Screenshot Thumbnail -->
+                    <!-- Instagram Preview Card for Classes Section -->
                     <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
                         <div class="insta-preview-header">
                             <div class="insta-avatar">IG</div>
