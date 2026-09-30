@@ -23,7 +23,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Top Clean Navigation Bar (Like Nakpro) */
+        /* Top Clean Navigation Bar */
         nav.top-bar {
             background: #ffffff;
             display: flex;
@@ -42,7 +42,6 @@
             gap: 1.5rem;
         }
 
-        /* Hamburger / Menu button */
         .menu-btn {
             background: none;
             border: none;
@@ -109,6 +108,45 @@
             color: var(--text);
         }
 
+        /* Slideshow Banner Styles */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: 1.5rem auto 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            background: #000;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slideshow-dots {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0,0,0,0.03);
+        }
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 4px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+        }
+        .dot.active {
+            background-color: var(--accent);
+        }
+
         .container {
             max-width: 1000px;
             margin: 1.5rem auto;
@@ -140,20 +178,26 @@
         @media(min-width: 768px) {
             .about-grid { grid-template-columns: 1fr 2fr; }
         }
+        .owner-container {
+            text-align: center;
+        }
         .owner-photo {
             width: 100%;
-            max-width: 220px;
-            height: 220px;
+            max-width: 200px;
+            height: 260px; /* Portrait aspect ratio */
             background: #ddd;
-            border-radius: 50%;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-            font-size: 0.9rem;
+            border-radius: 12px;
+            margin: 0 auto 0.5rem;
+            display: block;
             object-fit: cover;
-            border: 4px solid var(--accent);
+            border: 3px solid var(--accent);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .owner-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-top: 5px;
         }
 
         /* Catalog Grid */
@@ -289,7 +333,7 @@
 </head>
 <body id="home">
 
-    <!-- Top Navigation Bar (Nakpro style) -->
+    <!-- Top Navigation Bar -->
     <nav class="top-bar">
         <div class="nav-left">
             <button class="menu-btn" onclick="alert('Menu options opened!')" aria-label="Menu">
@@ -299,13 +343,14 @@
             </button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">About The Institute</a></li>
                 <li><a href="#catalog">Guitar Catalog</a></li>
                 <li><a href="#classes">Classes</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
 
-        <!-- Clickable Logo Image taking you back to home -->
+        <!-- Clickable Logo Image -->
         <a href="#home" class="logo-container">
             <img src="logo.png" alt="Logo" class="site-logo">
         </a>
@@ -315,6 +360,20 @@
         </div>
     </nav>
 
+    <!-- Slideshow Banner -->
+    <div class="slideshow-container">
+        <img class="slide active" src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20g1.jpg?raw=true" alt="Offer Ad 1">
+        <img class="slide" src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20g3.jpg?raw=true" alt="Offer Ad 2">
+        <img class="slide" src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20b1.jpg?raw=true" alt="Offer Ad 3">
+        <img class="slide" src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20g2.jpg?raw=true" alt="Offer Ad 4">
+    </div>
+    <div class="slideshow-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
     <!-- Floating WhatsApp Sticker -->
     <a href="https://wa.me/919910444964?text=Hi,%20I%20want%20to%20inquire%20about%20guitar%20classes%20and%20guitars." class="whatsapp-float" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.482 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -323,20 +382,7 @@
 
     <div class="container">
 
-        <!-- About & Owner Section -->
-        <section>
-            <h2>About The Institute & Owner</h2>
-            <div class="about-grid">
-                <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/20230820_112448(1).jpg?raw=true" alt="Rudraksh Bhagat" class="owner-photo">
-                <div>
-                    <p><strong>Welcome to Let's Learn Guitar!</strong> Founded out of pure passion for music, our institute serves as both a dedicated guitar learning hub and a specialized music store.</p>
-                    <p><strong>Our Motive:</strong> We believe that anyone can master the fretboard with the right guidance. Alongside structured lessons tailored to every skill level, we handpick quality guitars so students and enthusiasts get the best acoustics and playability.</p>
-                    <p><strong>Location:</strong> C-27 Shivalik Nagar, Haridwar, Uttarakhand</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Guitar Store Catalog -->
+        <!-- Guitar Store Catalog (Moved Above) -->
         <section id="catalog">
             <h2>Guitar Catalog & Store</h2>
             <div class="store-notice">
@@ -379,6 +425,22 @@
             </div>
         </section>
 
+        <!-- About & Owner Section (Moved Below Catalog) -->
+        <section id="about">
+            <h2>About The Institute & Owner</h2>
+            <div class="about-grid">
+                <div class="owner-container">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/20230820_112448(1).jpg?raw=true" alt="Rudraksh Bhagat" class="owner-photo">
+                    <div class="owner-name">Rudraksh Bhagat</div>
+                </div>
+                <div>
+                    <p><strong>Welcome to Let's Learn Guitar!</strong> Founded out of pure passion for music, our institute serves as both a dedicated guitar learning hub and a specialized music store.</p>
+                    <p><strong>Our Motive:</strong> We believe that anyone can master the fretboard with the right guidance. Alongside structured lessons tailored to every skill level, we handpick quality guitars so students and enthusiasts get the best acoustics and playability.</p>
+                    <p><strong>Location:</strong> C-27 Opposite Shiv Mandir Shivalik Nagar, Haridwar, Uttarakhand</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Guitar Classes & QR Code -->
         <section id="classes">
             <h2>Guitar Classes & Inquiries</h2>
@@ -414,5 +476,40 @@
         <p>&copy; 2026 Let's Learn Guitar. All rights reserved.</p>
     </footer>
 
+    <!-- Slideshow Script -->
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+
+        function currentSlide(n) {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            slideIndex = n;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex].style.display = "block";
+            dots[slideIndex].className += " active";
+        }
+    </script>
 </body>
 </html>
