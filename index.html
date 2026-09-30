@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Classes & Catalog</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+            --bg: #f9f9f9;
+            --text: #333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+        }
+        header h1 { margin: 0; font-size: 2rem; }
+        header p { margin: 0.5rem 0 0; font-size: 1.1rem; opacity: 0.8; }
+        
+        section {
+            padding: 2rem 1rem;
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        h2 { color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        @media(min-width: 600px) {
+            .catalog-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .card h3 { margin: 0.5rem 0; color: var(--primary); }
+        
+        .qr-section {
+            text-align: center;
+            background: #fff3f2;
+            border: 1px dashed var(--accent);
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--primary);
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Strum & Soul Guitar Studio</h1>
+        <p>Quality Guitars & Professional Classes</p>
+    </header>
+
+    <section>
+        <h2>Our Story & Motive</h2>
+        <p><strong>How it started:</strong> Founded out of a deep passion for music, our studio began with a simple vision: to make quality guitar education accessible and to provide instruments built with integrity and exceptional craftsmanship.</p>
+        <p><strong>Our Quality:</strong> Every guitar in our catalog is hand-checked for rich acoustics, durability, and smooth playability. Whether you are learning your first chord or looking for a reliable instrument, we ensure top-tier standards.</p>
+    </section>
+
+    <section class="qr-section">
+        <h2>Join Our Classes / Inquiry</h2>
+        <p>Scan the QR code below or click the button to fill out our Google Form for class registrations and inquiries.</p>
+        <!-- Replace placeholder with your actual QR code image link or file -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://forms.gle/YOUR_GOOGLE_FORM_LINK" alt="Google Form QR Code" style="margin: 1rem 0; border: 4px solid white; border-radius: 4px;">
+        <br>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="btn">Open Registration Form</a>
+    </section>
+
+    <section>
+        <h2>Guitar Catalog</h2>
+        <p style="text-align: center; font-size: 0.9rem; color: #666;"><em>Note: Direct online purchasing is unavailable. Browse our models below and contact us directly to purchase or test play.</em></p>
+        
+        <div class="catalog-grid">
+            <div class="card">
+                <h3>Acoustic Master Series</h3>
+                <p>Warm tone, solid spruce top, perfect for beginners and intermediate players alike.</p>
+            </div>
+            <div class="card">
+                <h3>Classic Nylon Concert</h3>
+                <p>Mellow sound with soft nylon strings, ideal for classical and fingerstyle learning.</p>
+            </div>
+            <div class="card">
+                <h3>Electro-Acoustic Stage</h3>
+                <p>Equipped with built-in electronics for plugging into amplifiers during live practice.</p>
+            </div>
+            <div class="card">
+                <h3>Junior Travel Guitar</h3>
+                <p>Compact size designed for younger students or musicians on the move.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Contact & Location</h2>
+        <p><strong>Owner:</strong> [Your Name / Owner Name]</p>
+        <p><strong>Location:</strong> [Your Studio Address / City]</p>
+        <p><strong>Phone / WhatsApp:</strong> [Your Phone Number]</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Strum & Soul Guitar Studio. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
