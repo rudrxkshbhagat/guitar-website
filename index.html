@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guitar Classes & Catalog</title>
+    <title>Let's Learn Guitar | Classes & Store</title>
     <style>
         :root {
-            --primary: #2c3e50;
+            --primary: #1a1a1a;
             --accent: #e74c3c;
-            --bg: #f9f9f9;
-            --text: #333;
+            --bg: #f4f4f4;
+            --card-bg: #ffffff;
+            --text: #333333;
         }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--bg);
@@ -23,43 +24,143 @@
             background: var(--primary);
             color: white;
             text-align: center;
-            padding: 2.5rem 1rem;
+            padding: 3rem 1rem 2rem;
+            border-bottom: 4px solid var(--accent);
         }
-        header h1 { margin: 0; font-size: 2rem; }
-        header p { margin: 0.5rem 0 0; font-size: 1.1rem; opacity: 0.8; }
-        
-        section {
-            padding: 2rem 1rem;
-            max-width: 800px;
+        header h1 { margin: 0; font-size: 2.2rem; letter-spacing: 1px; }
+        header p { margin: 0.5rem 0 0; font-size: 1.1rem; color: #bbb; }
+
+        .container {
+            max-width: 1000px;
             margin: auto;
-            background: white;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 1rem;
         }
-        h2 { color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
-        
+
+        section {
+            background: var(--card-bg);
+            margin-bottom: 1.5rem;
+            padding: 2rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        h2 { 
+            color: var(--primary); 
+            border-bottom: 2px solid var(--accent); 
+            padding-bottom: 0.5rem; 
+            margin-top: 0;
+        }
+
+        /* About / Owner Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        @media(min-width: 768px) {
+            .about-grid { grid-template-columns: 1fr 2fr; }
+        }
+        .owner-photo {
+            width: 100%;
+            max-width: 220px;
+            height: 220px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 0.9rem;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+        }
+
+        /* Catalog Grid */
         .catalog-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         @media(min-width: 600px) {
-            .catalog-grid { grid-template-columns: 1fr 1fr; }
+            .catalog-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        .card {
+        @media(min-width: 900px) {
+            .catalog-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .guitar-card {
             background: #fff;
-            border: 1px solid #ddd;
+            border: 1px solid #e1e1e1;
             border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+        .guitar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+        .guitar-img {
+            width: 100%;
+            height: 180px;
+            background: #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.85rem;
+            object-fit: cover;
+        }
+        .guitar-info {
             padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .guitar-info h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--primary); }
+        .price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin: 0.5rem 0;
+        }
+        .discount-note {
+            font-size: 0.8rem;
+            color: #555;
+            background: #fff9f9;
+            border-left: 3px solid var(--accent);
+            padding: 4px 8px;
+            margin-top: auto;
+            margin-bottom: 0.8rem;
+        }
+        .store-notice {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #555;
+            background: #fff3f2;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            border: 1px dashed var(--accent);
+        }
+
+        /* QR & Classes Section */
+        .classes-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
             text-align: center;
         }
-        .card h3 { margin: 0.5rem 0; color: var(--primary); }
-        
-        .qr-section {
-            text-align: center;
-            background: #fff3f2;
-            border: 1px dashed var(--accent);
+        @media(min-width: 600px) {
+            .classes-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .qr-box {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
         }
         .btn {
             display: inline-block;
@@ -69,11 +170,16 @@
             text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
+        .btn-insta {
+            background: #E1306C;
+            margin-left: 0.5rem;
+        }
+
         footer {
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem 1rem;
             background: var(--primary);
             color: white;
             font-size: 0.9rem;
@@ -83,58 +189,105 @@
 <body>
 
     <header>
-        <h1>Strum & Soul Guitar Studio</h1>
-        <p>Quality Guitars & Professional Classes</p>
+        <h1>Let's Learn Guitar</h1>
+        <p>Professional Guitar Classes & Premium Store</p>
     </header>
 
-    <section>
-        <h2>Our Story & Motive</h2>
-        <p><strong>How it started:</strong> Founded out of a deep passion for music, our studio began with a simple vision: to make quality guitar education accessible and to provide instruments built with integrity and exceptional craftsmanship.</p>
-        <p><strong>Our Quality:</strong> Every guitar in our catalog is hand-checked for rich acoustics, durability, and smooth playability. Whether you are learning your first chord or looking for a reliable instrument, we ensure top-tier standards.</p>
-    </section>
+    <div class="container">
 
-    <section class="qr-section">
-        <h2>Join Our Classes / Inquiry</h2>
-        <p>Scan the QR code below or click the button to fill out our Google Form for class registrations and inquiries.</p>
-        <!-- Replace placeholder with your actual QR code image link or file -->
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://forms.gle/YOUR_GOOGLE_FORM_LINK" alt="Google Form QR Code" style="margin: 1rem 0; border: 4px solid white; border-radius: 4px;">
-        <br>
-        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" class="btn">Open Registration Form</a>
-    </section>
+        <!-- About & Owner Section -->
+        <section>
+            <h2>About The Institute & Owner</h2>
+            <div class="about-grid">
+                <!-- Replace src with your actual photo link later -->
+                <img src="YOUR_OWNER_PHOTO_LINK.jpg" alt="Owner Photo" class="owner-photo">
+                <div>
+                    <p><strong>Welcome to Let's Learn Guitar!</strong> Founded out of pure passion for music, our institute serves as both a dedicated guitar learning hub and a specialized music store.</p>
+                    <p><strong>Our Motive:</strong> We believe that anyone can master the fretboard with the right guidance. Alongside structured lessons tailored to every skill level, we handpick quality guitars so students and enthusiasts get the best acoustics and playability.</p>
+                    <p><strong>Location:</strong> Haridwar, Uttarakhand</p>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>Guitar Catalog</h2>
-        <p style="text-align: center; font-size: 0.9rem; color: #666;"><em>Note: Direct online purchasing is unavailable. Browse our models below and contact us directly to purchase or test play.</em></p>
-        
-        <div class="catalog-grid">
-            <div class="card">
-                <h3>Acoustic Master Series</h3>
-                <p>Warm tone, solid spruce top, perfect for beginners and intermediate players alike.</p>
+        <!-- Guitar Store Catalog -->
+        <section>
+            <h2>Guitar Catalog & Store</h2>
+            <div class="store-notice">
+                ℹ️ <strong>Offline Store Policy:</strong> Direct online checkout is unavailable. Browse our models below, note the reference price, and contact us directly for exclusive in-store discounts and best offers!
             </div>
-            <div class="card">
-                <h3>Classic Nylon Concert</h3>
-                <p>Mellow sound with soft nylon strings, ideal for classical and fingerstyle learning.</p>
-            </div>
-            <div class="card">
-                <h3>Electro-Acoustic Stage</h3>
-                <p>Equipped with built-in electronics for plugging into amplifiers during live practice.</p>
-            </div>
-            <div class="card">
-                <h3>Junior Travel Guitar</h3>
-                <p>Compact size designed for younger students or musicians on the move.</p>
-            </div>
-        </div>
-    </section>
 
-    <section>
-        <h2>Contact & Location</h2>
-        <p><strong>Owner:</strong> [Your Name / Owner Name]</p>
-        <p><strong>Location:</strong> [Your Studio Address / City]</p>
-        <p><strong>Phone / WhatsApp:</strong> [Your Phone Number]</p>
-    </section>
+            <div class="catalog-grid">
+                <!-- Guitar Item 1 -->
+                <div class="guitar-card">
+                    <!-- Replace src with your guitar image link -->
+                    <img src="GUITAR_IMAGE_1_LINK.jpg" alt="Acoustic Guitar" class="guitar-img">
+                    <div class="guitar-info">
+                        <h3>Acoustic Master Spruce</h3>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0 0 0.5rem;">Rich tone, ideal for learners and performers.</p>
+                        <div class="price">₹7,499</div>
+                        <div class="discount-note">💬 Contact us for best offline discounts!</div>
+                    </div>
+                </div>
+
+                <!-- Guitar Item 2 -->
+                <div class="guitar-card">
+                    <img src="GUITAR_IMAGE_2_LINK.jpg" alt="Classic Nylon Guitar" class="guitar-img">
+                    <div class="guitar-info">
+                        <h3>Classic Nylon Concert</h3>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0 0 0.5rem;">Soft strings, mellow sound for fingerstyle.</p>
+                        <div class="price">₹6,299</div>
+                        <div class="discount-note">💬 Contact us for best offline discounts!</div>
+                    </div>
+                </div>
+
+                <!-- Guitar Item 3 -->
+                <div class="guitar-card">
+                    <img src="GUITAR_IMAGE_3_LINK.jpg" alt="Electro-Acoustic Guitar" class="guitar-img">
+                    <div class="guitar-info">
+                        <h3>Electro-Acoustic Stage</h3>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0 0 0.5rem;">Built-in pickup for plug-and-play amplification.</p>
+                        <div class="price">₹9,999</div>
+                        <div class="discount-note">💬 Contact us for best offline discounts!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guitar Classes & QR Code -->
+        <section>
+            <h2>Guitar Classes & Inquiries</h2>
+            <div class="classes-grid">
+                <div>
+                    <h3 style="color: var(--primary); margin-top: 0;">Learn From the Experts</h3>
+                    <p>Whether you're picking up a guitar for the first time or want to level up your technique, our classes cover chords, scales, theory, and your favorite songs.</p>
+                    <p>Stay updated with our latest student progress, tips, and studio updates on Instagram:</p>
+                    <!-- Replace with your Instagram Page Link -->
+                    <a href="https://instagram.com/YOUR_INSTAGRAM_PAGE" target="_blank" class="btn btn-insta">Visit Instagram Page</a>
+                </div>
+                
+                <div class="qr-box">
+                    <h3 style="color: var(--primary); margin-top: 0;">Quick Inquiry QR Code</h3>
+                    <p style="font-size: 0.9rem;">Scan with your phone camera or click below to fill out our Google Form for class admissions or guitar availability.</p>
+                    <!-- Replace placeholder with your Google Form QR code image URL -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/YOUR_GOOGLE_FORM_LINK" alt="Google Form QR Code" style="border: 3px solid white; border-radius: 4px;">
+                    <br>
+                    <a href="https://forms.gle/w8U1Zzk7uMf3HA4D9" target="_blank" class="btn">Open Google Form</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Location -->
+        <section style="margin-bottom: 0;">
+            <h2>Contact Details</h2>
+            <p><strong>Institute Name:</strong> Let's Learn Guitar</p>
+            <p><strong>Location:</strong> C-27 Shivalik Nagar, Haridwar, Uttarakhand</p>
+            <p><strong>Phone / WhatsApp:</strong> [+91 99104 44964]</p>
+        </section>
+
+    </div>
 
     <footer>
-        <p>&copy; 2026 Strum & Soul Guitar Studio. All rights reserved.</p>
+        <p>&copy; 2026 Let's Learn Guitar. All rights reserved.</p>
     </footer>
 
 </body>
