@@ -12,36 +12,53 @@
             --card-bg: #ffffff;
             --text: #333333;
         }
-       body {
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f3ff; /* Very light purple background for the whole site */
+            background-color: #f5f3ff;
             color: var(--text);
             line-height: 1.6;
         }
         header {
-            background: #5b21b6; /* Rich purple background */
+            background: #5b21b6;
             color: white;
-            text-align: center; /* Centers everything in the header */
-            padding: 3rem 1rem 2rem;
+            text-align: center;
+            padding: 2.5rem 1rem 2rem;
             border-bottom: 4px solid var(--accent);
+        }
+        /* Logo styling for A4 landscape PNG */
+        .site-logo {
+            max-height: 70px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            margin-bottom: 0.75rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         header h1 { 
             margin: 0; 
-            font-size: 2.8rem; 
+            font-size: 2.5rem; 
             letter-spacing: 2px; 
             font-family: 'Georgia', serif; 
             font-style: italic;
             text-transform: uppercase;
-            color: white; /* Pure white text */
-            text-align: center; /* Forces middle alignment */
+            color: white; 
+            text-align: center; 
         }
         header p { 
             margin: 0.5rem auto 0; 
             font-size: 1.1rem; 
-            color: #e9d5ff; /* Light lavender subtitle text */
-            text-align: center;
+            color: #e9d5ff; 
+            text-align: center; 
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
         }
 
         section {
@@ -56,7 +73,7 @@
             color: var(--primary); 
             border-bottom: 2px solid var(--accent); 
             padding-bottom: 0.5rem; 
-            margin-top: 0;
+            margin-top: 0; 
         }
 
         /* About / Owner Section */
@@ -112,7 +129,7 @@
         }
         .guitar-img {
             width: 100%;
-            height: 300px;
+            height: 240px;
             background: #eaeaea;
             display: flex;
             align-items: center;
@@ -182,7 +199,7 @@
         }
         .btn-insta {
             background: #E1306C;
-            margin-left: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         footer {
@@ -197,6 +214,8 @@
 <body>
 
     <header>
+        <!-- Your Inkscape Logo File Uploaded to GitHub as logo.png -->
+        <img src="logo.png" alt="Let's Learn Guitar Logo" class="site-logo">
         <h1>Let's Learn Guitar</h1>
         <p>Professional Guitar Classes & Premium Store</p>
     </header>
@@ -207,7 +226,6 @@
         <section>
             <h2>About The Institute & Owner</h2>
             <div class="about-grid">
-                <!-- Replace src with your actual photo link later -->
                 <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/20230820_112448(1).jpg?raw=true" alt="Rudraksh Bhagat" class="owner-photo">
                 <div>
                     <p><strong>Welcome to Let's Learn Guitar!</strong> Founded out of pure passion for music, our institute serves as both a dedicated guitar learning hub and a specialized music store.</p>
@@ -227,7 +245,6 @@
             <div class="catalog-grid">
                 <!-- Guitar Item 1 -->
                 <div class="guitar-card">
-                    <!-- Replace src with your guitar image link -->
                     <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/kaspar%20blue.webp?raw=true" alt="Kaspar Acoustic Guitar" class="guitar-img">
                     <div class="guitar-info">
                         <h3>Acoustic Master Spruce</h3>
@@ -239,7 +256,7 @@
 
                 <!-- Guitar Item 2 -->
                 <div class="guitar-card">
-                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/yamaha%20f280c.jpg?raw=true" alt="Yammaha F280 Acoustic Guitar" class="guitar-img">
+                    <img src="https://github.com/yamaha%20f280c.jpg?raw=true" alt="Yamaha F280 Acoustic Guitar" class="guitar-img" onerror="this.src='https://github.com/rudrxkshbhagat/guitar-website/blob/main/yamaha%20f280c.jpg?raw=true'">
                     <div class="guitar-info">
                         <h3>Classic Nylon Concert</h3>
                         <p style="font-size: 0.85rem; color: #666; margin: 0 0 0.5rem;">Soft strings, mellow sound for fingerstyle.</p>
@@ -269,14 +286,12 @@
                     <h3 style="color: var(--primary); margin-top: 0;">Learn From the Experts</h3>
                     <p>Whether you're picking up a guitar for the first time or want to level up your technique, our classes cover chords, scales, theory, and your favorite songs.</p>
                     <p>Stay updated with our latest student progress, tips, and studio updates on Instagram:</p>
-                    <!-- Replace with your Instagram Page Link -->
                     <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="btn btn-insta">Visit Instagram Page</a>
                 </div>
                 
                 <div class="qr-box">
                     <h3 style="color: var(--primary); margin-top: 0;">Quick Inquiry QR Code</h3>
                     <p style="font-size: 0.9rem;">Scan with your phone camera or click below to fill out our Google Form for class admissions or guitar availability.</p>
-                    <!-- Replace placeholder with your Google Form QR code image URL -->
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/w8U1Zzk7uMf3HA4D9" alt="Google Form QR Code" style="border: 3px solid white; border-radius: 4px;">
                     <br>
                     <a href="https://forms.gle/w8U1Zzk7uMf3HA4D9" target="_blank" class="btn">Open Google Form</a>
@@ -289,7 +304,7 @@
             <h2>Contact Details</h2>
             <p><strong>Institute Name:</strong> Let's Learn Guitar</p>
             <p><strong>Location:</strong> C-27 Shivalik Nagar, Haridwar, Uttarakhand</p>
-            <p><strong>Phone / WhatsApp:</strong> [+91 99104 44964]</p>
+            <p><strong>Phone / WhatsApp:</strong> +91 99104 44964</p>
         </section>
 
     </div>
