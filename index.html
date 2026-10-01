@@ -166,23 +166,36 @@
         .slide.active {
             display: block;
         }
-        .slideshow-dots {
-            text-align: center;
-            padding: 10px;
-            background: rgba(0,0,0,0.03);
+
+        /* Trust Badges Bar Below Banner */
+        .trust-badges-container {
+            max-width: 1000px;
+            margin: 1rem auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            padding: 0.5rem 1rem;
         }
-        .dot {
-            height: 10px;
-            width: 10px;
-            margin: 0 4px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-            cursor: pointer;
+        @media(min-width: 600px) {
+            .trust-badges-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
-        .dot.active {
-            background-color: var(--primary);
+        .trust-badge-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        .trust-badge-item img {
+            max-width: 100%;
+            height: auto;
+            max-height: 55px;
+            object-fit: contain;
         }
 
         .container {
@@ -246,26 +259,26 @@
             border: none;
         }
 
-        /* Catalog Grid */
+        /* Catalog Grid - Mobile Friendly (2 Columns on mobile so 4 guitars fit in view) */
         .catalog-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
         }
-        @media(min-width: 600px) {
-            .catalog-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media(min-width: 900px) {
-            .catalog-grid { grid-template-columns: repeat(3, 1fr); }
+        @media(min-width: 768px) {
+            .catalog-grid { 
+                grid-template-columns: repeat(4, 1fr); 
+                gap: 1.2rem;
+            }
         }
         .guitar-card {
             background: #fff;
             border: 1px solid #e1e1e1;
-            border-radius: 6px;
+            border-radius: 8px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .guitar-card:hover {
             transform: translateY(-3px);
@@ -273,32 +286,136 @@
         }
         .guitar-img {
             width: 100%;
-            height: 240px;
-            background: #eaeaea;
-            object-fit: cover;
+            height: 140px;
+            background: #ffffff;
+            object-fit: contain;
+            padding: 8px;
+        }
+        @media(min-width: 768px) {
+            .guitar-img { height: 180px; }
         }
         .guitar-info {
-            padding: 1rem;
+            padding: 0.6rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
-        .guitar-info h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: #1a1a1a; }
-        .price {
-            font-size: 1.1rem;
+        .guitar-info h3 { 
+            margin: 0 0 0.3rem; 
+            font-size: 0.85rem; 
+            color: #1a1a1a; 
+            line-height: 1.2;
+            height: 2.4em;
+            overflow: hidden;
+        }
+        @media(min-width: 768px) {
+            .guitar-info h3 { font-size: 1rem; }
+        }
+
+        /* Price Formatting with Strikethrough MRP */
+        .price-container {
+            margin: 0.4rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+        .sale-price {
+            font-size: 1rem;
             font-weight: bold;
             color: var(--accent);
-            margin: 0.5rem 0;
         }
+        .mrp-price {
+            font-size: 0.75rem;
+            color: #888;
+            text-decoration: line-through;
+            text-decoration-color: var(--accent);
+            text-decoration-thickness: 1.5px;
+        }
+
         .discount-note {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #555;
             background: #fff9f9;
-            border-left: 3px solid var(--accent);
-            padding: 4px 8px;
+            border-left: 2px solid var(--accent);
+            padding: 3px 6px;
             margin-top: auto;
-            margin-bottom: 0.8rem;
         }
+
+        .see-more-btn-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .see-more-btn {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 0.7rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .see-more-btn:hover {
+            background: #e68a00;
+            transform: scale(1.03);
+        }
+
+        /* Category Banners Section */
+        .category-banners-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        @media(min-width: 768px) {
+            .category-banners-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .category-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+        .category-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        @media(min-width: 768px) {
+            .category-card img { height: 150px; }
+        }
+        .category-card-body {
+            padding: 0.6rem;
+            background: #fafafa;
+            flex-grow: 1;
+            text-align: center;
+        }
+        .category-card-body h4 {
+            margin: 0 0 0.2rem;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+        .category-card-body p {
+            margin: 0;
+            font-size: 0.75rem;
+            color: #666;
+            line-height: 1.3;
+        }
+
         .store-notice {
             text-align: center;
             font-size: 0.95rem;
@@ -394,7 +511,7 @@
             <ul class="nav-links" id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About The Institute</a></li>
-                <li><a href="#catalog">Guitar Catalog</a></li>
+                <li><a href="catalog.html">Guitar Catalog</a></li>
                 <li><a href="#classes">Classes</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -405,7 +522,7 @@
         </a>
 
         <div class="nav-right-icons">
-            <a href="#catalog" class="icon-btn" title="Catalog">🎸</a>
+            <a href="catalog.html" class="icon-btn" title="Catalog">🎸</a>
         </div>
     </nav>
 
@@ -416,11 +533,21 @@
         <img class="slide" src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20b1.jpg?raw=true" alt="Offer Ad 3">
         <img class="slide" src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20g2.jpg?raw=true" alt="Offer Ad 4">
     </div>
-    <div class="slideshow-dots">
-        <span class="dot active" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
+
+    <!-- Trust Features Bar -->
+    <div class="trust-badges-container">
+        <div class="trust-badge-item">
+            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/100%20Secure%20Shopping.png?raw=true" alt="100% Secure Shopping">
+        </div>
+        <div class="trust-badge-item">
+            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Genuine%20Products.png?raw=true" alt="Genuine Products">
+        </div>
+        <div class="trust-badge-item">
+            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Free%20Tachnical%20Support.png?raw=true" alt="Free Technical Support">
+        </div>
+        <div class="trust-badge-item">
+            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Inspection%20by%20Guitar%20Specialist.png?raw=true" alt="Inspection by Guitar Specialist">
+        </div>
     </div>
 
     <!-- Floating WhatsApp Sticker -->
@@ -431,7 +558,7 @@
 
     <div class="container">
 
-        <!-- About Overview Section with Link to Dedicated Page -->
+        <!-- About Overview Section -->
         <section>
             <h2>About The Institute</h2>
             <div class="about-snippet">
@@ -440,36 +567,32 @@
             </div>
         </section>
 
-        <!-- Student Performances & Reels Section -->
+        <!-- Student Performances Section -->
         <section>
             <h2>Student Performances & Guitar Shorts</h2>
             <p style="color: #555; margin-bottom: 1rem;">Watch our students and instructors in action!</p>
 
             <div class="shorts-grid">
-                <!-- Short 1 -->
                 <div class="short-card">
                     <iframe src="https://www.youtube.com/embed/GooZTTnvFmc" title="Guitar Short 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <!-- Short 2 -->
                 <div class="short-card">
                     <iframe src="https://www.youtube.com/embed/rfspzIMt3j4" title="Guitar Short 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <!-- Short 3 (Arnav) -->
                 <div class="short-card">
                     <iframe src="https://www.youtube.com/embed/5iTKChJYxF4" title="Guitar Short 3 - Arnav" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <!-- Short 4 (Arnav) -->
                 <div class="short-card">
                     <iframe src="https://www.youtube.com/embed/EsBo_bODnCw" title="Guitar Short 4 - Arnav" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
 
-        <!-- Guitar Store Catalog -->
+        <!-- Featured Guitars Showcase (4 Items) -->
         <section id="catalog">
-            <h2>Guitar Catalog & Store</h2>
+            <h2>Featured Guitars</h2>
             <div class="store-notice">
-                ℹ️ <strong>Offline Store Policy:</strong> Direct online checkout is unavailable. Browse our models below, note the reference price, and contact us directly for exclusive in-store discounts and best offers!
+                ℹ️ <strong>Offline Store Policy:</strong> Direct online checkout is unavailable. Browse our featured models below or visit our full catalog for special in-store pricing!
             </div>
 
             <div class="catalog-grid">
@@ -478,33 +601,101 @@
                     <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/kaspar%20blue.webp?raw=true" alt="Kaspar Acoustic Guitar" class="guitar-img">
                     <div class="guitar-info">
                         <h3>Kaspar Acoustic Guitar</h3>
-                        <p style="font-size: 0.85rem; color: #666; margin: 0 0 0.5rem;">Rich tone, ideal for learners and performers.</p>
-                        <div class="price">₹5,499</div>
-                        <div class="discount-note">💬 Contact us for best offline discounts!</div>
+                        <div class="price-container">
+                            <span class="sale-price">₹5,499</span>
+                            <span class="mrp-price">₹8,999</span>
+                        </div>
+                        <div class="discount-note">💬 Contact for offline offers</div>
                     </div>
                 </div>
 
                 <!-- Guitar Item 2 -->
                 <div class="guitar-card">
-                    <img src="https://raw.githubusercontent.com/rudrxkshbhagat/guitar-website/main/yamaha%20f280c.jpg" alt="Yamaha F280 Acoustic Guitar" class="guitar-img">
+                    <img src="https://raw.githubusercontent.com/rudrxkshbhagat/guitar-website/main/yamaha%20f280c.jpg" alt="Yamaha F280C Acoustic Guitar" class="guitar-img">
                     <div class="guitar-info">
                         <h3>Yamaha F280C Acoustic Guitar</h3>
-                        <p style="font-size: 0.85rem; color: #666; margin: 0 0 0.5rem;">Soft strings, mellow sound for fingerstyle.</p>
-                        <div class="price">₹8,599</div>
-                        <div class="discount-note">💬 Contact us for best offline discounts!</div>
+                        <div class="price-container">
+                            <span class="sale-price">₹8,599</span>
+                            <span class="mrp-price">₹11,999</span>
+                        </div>
+                        <div class="discount-note">💬 Contact for offline offers</div>
                     </div>
                 </div>
 
                 <!-- Guitar Item 3 -->
                 <div class="guitar-card">
-                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Hertz-3900-Bk-EQ-front.webp?raw=true" alt="Hertz BK4010 Electro-Acoustic Guitar" class="guitar-img">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Hertz-3900-Bk-EQ-front.webp?raw=true" alt="Hertz BK Electro-Acoustic Guitar" class="guitar-img">
                     <div class="guitar-info">
-                        <h3>Hertz BK Electro-Acoustic Guitar</h3>
-                        <p style="font-size: 0.85rem; color: #666; margin: 0 0 0.5rem;">Built-in pickup for plug-and-play amplification.</p>
-                        <div class="price">₹12,999</div>
-                        <div class="discount-note">💬 Contact us for best offline discounts!</div>
+                        <h3>Hertz BK Electro-Acoustic</h3>
+                        <div class="price-container">
+                            <span class="sale-price">₹12,999</span>
+                            <span class="mrp-price">₹16,999</span>
+                        </div>
+                        <div class="discount-note">💬 Contact for offline offers</div>
                     </div>
                 </div>
+
+                <!-- Guitar Item 4 -->
+                <div class="guitar-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/cort%20af500c.webp?raw=true" alt="Cort AF500C Acoustic Guitar" class="guitar-img">
+                    <div class="guitar-info">
+                        <h3>Cort AF500C Acoustic Guitar</h3>
+                        <div class="price-container">
+                            <span class="sale-price">₹7,999</span>
+                            <span class="mrp-price">₹11,499</span>
+                        </div>
+                        <div class="discount-note">💬 Contact for offline offers</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- See More Button -->
+            <div class="see-more-btn-container">
+                <a href="catalog.html" class="see-more-btn">See More Guitars &raquo;</a>
+            </div>
+        </section>
+
+        <!-- Category Banners Showcase -->
+        <section>
+            <h2>Explore Categories</h2>
+            <p style="color: #666; margin-top:-0.5rem; font-size: 0.9rem;">Browse our complete range of acoustic, electric, and traditional instruments in our catalog.</p>
+            
+            <div class="category-banners-grid">
+                <!-- Category 1 -->
+                <a href="catalog.html" class="category-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitaryamaha%20fsx80c%20guitar.webp?raw=true" alt="Yamaha Guitars">
+                    <div class="category-card-body">
+                        <h4>Acoustic Series</h4>
+                        <p>Great tone, outstanding comfort, zero compromise.</p>
+                    </div>
+                </a>
+
+                <!-- Category 2 -->
+                <a href="catalog.html" class="category-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20hertz%20electric.jpg?raw=true" alt="Electric Guitars">
+                    <div class="category-card-body">
+                        <h4>Electric Guitars</h4>
+                        <p>High performance guitars for stage and studio setups.</p>
+                    </div>
+                </a>
+
+                <!-- Category 3 -->
+                <a href="catalog.html" class="category-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20Ukulele.webp?raw=true" alt="Ukuleles">
+                    <div class="category-card-body">
+                        <h4>Ukuleles & Folk</h4>
+                        <p>Compact, portable, and sweet sounding instruments.</p>
+                    </div>
+                </a>
+
+                <!-- Category 4 -->
+                <a href="catalog.html" class="category-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitar%20cort.png?raw=true" alt="Cort Series">
+                    <div class="category-card-body">
+                        <h4>Cort Series</h4>
+                        <p>Premium craftsmanship acoustic and bass guitars.</p>
+                    </div>
+                </a>
             </div>
         </section>
 
@@ -552,32 +743,13 @@
 
         function showSlides() {
             let slides = document.getElementsByClassName("slide");
-            let dots = document.getElementsByClassName("dot");
             for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";  
             }
             slideIndex++;
             if (slideIndex > slides.length) {slideIndex = 1}    
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
             slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " active";
             setTimeout(showSlides, 4000);
-        }
-
-        function currentSlide(n) {
-            let slides = document.getElementsByClassName("slide");
-            let dots = document.getElementsByClassName("dot");
-            slideIndex = n;
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex].style.display = "block";
-            dots[slideIndex].className += " active";
         }
     </script>
 </body>
