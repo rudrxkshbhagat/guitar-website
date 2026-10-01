@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Let's Learn Guitar</title>
+
+    <style>
+        :root {
+            --primary: #660080;
+            --accent: #e74c3c;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        nav.top-bar {
+            background: #660080;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 22px;
+            height: 16px;
+            padding: 0;
+        }
+        .menu-btn span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background: #660080;
+            min-width: 180px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            list-style: none;
+            margin: 0;
+            padding: 0.5rem 0;
+            z-index: 1100;
+        }
+        .nav-links.show {
+            display: flex;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            display: block;
+        }
+        .nav-links li a:hover {
+            background: rgba(255,255,255,0.1);
+            color: #ffcccc;
+        }
+
+        @media(min-width: 768px) {
+            .menu-btn { display: none; }
+            .nav-links {
+                display: flex !important;
+                flex-direction: row;
+                position: static;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+                gap: 1.2rem;
+            }
+            .nav-links li a {
+                padding: 0;
+            }
+        }
+
+        .site-logo {
+            max-height: 55px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        h1, h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: start;
+            margin-top: 1.5rem;
+        }
+        @media(min-width: 768px) {
+            .about-grid { grid-template-columns: 1fr 2fr; }
+        }
+
+        .owner-photo {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 12px;
+            border: 3px solid var(--primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .owner-name {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .insta-preview-card {
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            background: #fff;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-top: 1.5rem;
+        }
+        .insta-preview-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            gap: 10px;
+            border-bottom: 1px solid #efefef;
+            background: #fafafa;
+        }
+        .insta-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5950 45%, #c62368 60%, #fa7e1e 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .insta-thumbnail-container img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+        }
+        .insta-footer {
+            padding: 12px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #660080;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-bar">
+        <div class="nav-left">
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About The Institute</a></li>
+                <li><a href="index.html#catalog">Guitar Catalog</a></li>
+                <li><a href="index.html#classes">Classes</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="logo-container">
+            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/logo%20transparent.png?raw=true" alt="Logo" class="site-logo">
+        </a>
+
+        <div></div>
+    </nav>
+
+    <div class="container">
+        <a href="index.html" class="btn-back">← Back to Home</a>
+        <section>
+            <h1>About The Institute & Founder</h1>
+            <div class="about-grid">
+                <div>
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/DPP.jpg?raw=true" alt="Rudraksh Bhagat" class="owner-photo">
+                    <div class="owner-name">Rudraksh Bhagat</div>
+                </div>
+                <div>
+                    <h2>Our Story</h2>
+                    <p>Welcome to <strong>Let's Learn Guitar</strong>! Founded out of pure passion for music, our institute serves as both a dedicated guitar learning hub and a specialized music store.</p>
+                    
+                    <h2>Our Motive</h2>
+                    <p>We believe that anyone can master the fretboard with the right guidance. Alongside structured lessons tailored to every skill level, we handpick quality guitars so students and enthusiasts get the best acoustics and playability.</p>
+                    
+                    <h2>Studio Location</h2>
+                    <p>📍 C-27 Opposite Shiv Mandir Shivalik Nagar, Haridwar, Uttarakhand</p>
+
+                    <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
+                        <div class="insta-preview-header">
+                            <div class="insta-avatar">IG</div>
+                            <div style="font-weight: 600;">letslearnguitarclasses</div>
+                        </div>
+                        <div class="insta-thumbnail-container">
+                            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Screenshot%202026-10-01%20011157.png?raw=true" alt="Instagram Profile Preview">
+                        </div>
+                        <div class="insta-footer">
+                            <strong>Let's Learn Guitar Classes</strong>
+                            Tap to view student progress, tips, and guitar sessions on Instagram.
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Let's Learn Guitar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("navMenu");
+            menu.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
