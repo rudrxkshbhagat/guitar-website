@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Catalog | Let's Learn Guitar</title>
+
+    <style>
+        :root {
+            --primary: #660080;
+            --accent: #e74c3c;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        nav.top-bar {
+            background: #660080;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 22px;
+            height: 16px;
+            padding: 0;
+        }
+        .menu-btn span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background: #660080;
+            min-width: 180px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            list-style: none;
+            margin: 0;
+            padding: 0.5rem 0;
+            z-index: 1100;
+        }
+        .nav-links.show {
+            display: flex;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            display: block;
+        }
+        .nav-links li a:hover {
+            background: rgba(255,255,255,0.1);
+            color: #ffcccc;
+        }
+
+        @media(min-width: 768px) {
+            .menu-btn { display: none; }
+            .nav-links {
+                display: flex !important;
+                flex-direction: row;
+                position: static;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+                gap: 1.2rem;
+            }
+            .nav-links li a {
+                padding: 0;
+            }
+        }
+
+        .site-logo {
+            max-height: 55px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Catalog Grid - 2 columns mobile, 4 columns desktop */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        @media(min-width: 768px) {
+            .catalog-grid { 
+                grid-template-columns: repeat(4, 1fr); 
+                gap: 1.5rem;
+            }
+        }
+
+        .guitar-card {
+            background: #fff;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .guitar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        .guitar-img {
+            width: 100%;
+            height: 160px;
+            background: #ffffff;
+            object-fit: contain;
+            padding: 10px;
+        }
+        @media(min-width: 768px) {
+            .guitar-img { height: 200px; }
+        }
+        .guitar-info {
+            padding: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .guitar-info h3 { 
+            margin: 0 0 0.4rem; 
+            font-size: 0.95rem; 
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        .price-container {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .sale-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        .mrp-price {
+            font-size: 0.8rem;
+            color: #888;
+            text-decoration: line-through;
+            text-decoration-color: var(--accent);
+            text-decoration-thickness: 1.5px;
+        }
+
+        .inquire-btn {
+            display: block;
+            text-align: center;
+            background: #25d366;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #660080;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-bar">
+        <div class="nav-left">
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About The Institute</a></li>
+                <li><a href="catalog.html">Guitar Catalog</a></li>
+                <li><a href="index.html#classes">Classes</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="logo-container">
+            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/logo%20transparent.png?raw=true" alt="Logo" class="site-logo">
+        </a>
+
+        <div></div>
+    </nav>
+
+    <div class="container">
+        <a href="index.html" class="btn-back">← Back to Home</a>
+        <section>
+            <h1>Complete Guitar Catalog</h1>
+            <p style="color: #666; margin-top: -0.5rem;">Explore our entire range of acoustic, electro-acoustic, and electric guitars available at our store in Shivalik Nagar, Haridwar.</p>
+
+            <div class="catalog-grid">
+                <!-- Guitar Item 1 -->
+                <div class="guitar-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/kaspar%20blue.webp?raw=true" alt="Kaspar Acoustic Guitar" class="guitar-img">
+                    <div class="guitar-info">
+                        <h3>Kaspar Acoustic Guitar</h3>
+                        <p style="font-size: 0.8rem; color: #666; margin: 0 0 0.5rem;">Rich tone, ideal for learners and performers.</p>
+                        <div class="price-container">
+                            <span class="sale-price">₹5,499</span>
+                            <span class="mrp-price">₹8,999</span>
+                        </div>
+                        <a href="https://wa.me/919910444964?text=Hi,%20I%20want%20to%20inquire%20about%20Kaspar%20Acoustic%20Guitar." class="inquire-btn" target="_blank">Inquire on WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Guitar Item 2 -->
+                <div class="guitar-card">
+                    <img src="https://raw.githubusercontent.com/rudrxkshbhagat/guitar-website/main/yamaha%20f280c.jpg" alt="Yamaha F280C Acoustic Guitar" class="guitar-img">
+                    <div class="guitar-info">
+                        <h3>Yamaha F280C Acoustic Guitar</h3>
+                        <p style="font-size: 0.8rem; color: #666; margin: 0 0 0.5rem;">Soft strings, mellow sound for fingerstyle.</p>
+                        <div class="price-container">
+                            <span class="sale-price">₹8,599</span>
+                            <span class="mrp-price">₹11,999</span>
+                        </div>
+                        <a href="https://wa.me/919910444964?text=Hi,%20I%20want%20to%20inquire%20about%20Yamaha%20F280C." class="inquire-btn" target="_blank">Inquire on WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Guitar Item 3 -->
+                <div class="guitar-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Hertz-3900-Bk-EQ-front.webp?raw=true" alt="Hertz BK Electro-Acoustic Guitar" class="guitar-img">
+                    <div class="guitar-info">
+                        <h3>Hertz BK Electro-Acoustic</h3>
+                        <p style="font-size: 0.8rem; color: #666; margin: 0 0 0.5rem;">Built-in pickup for plug-and-play amplification.</p>
+                        <div class="price-container">
+                            <span class="sale-price">₹12,999</span>
+                            <span class="mrp-price">₹16,999</span>
+                        </div>
+                        <a href="https://wa.me/919910444964?text=Hi,%20I%20want%20to%20inquire%20about%20Hertz%20BK%20Guitar." class="inquire-btn" target="_blank">Inquire on WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Guitar Item 4 -->
+                <div class="guitar-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/cort%20af500c.webp?raw=true" alt="Cort AF500C Acoustic Guitar" class="guitar-img">
+                    <div class="guitar-info">
+                        <h3>Cort AF500C Acoustic Guitar</h3>
+                        <p style="font-size: 0.8rem; color: #666; margin: 0 0 0.5rem;">Concert body shape with spruce top.</p>
+                        <div class="price-container">
+                            <span class="sale-price">₹7,999</span>
+                            <span class="mrp-price">₹11,499</span>
+                        </div>
+                        <a href="https://wa.me/919910444964?text=Hi,%20I%20want%20to%20inquire%20about%20Cort%20AF500C." class="inquire-btn" target="_blank">Inquire on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Let's Learn Guitar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            let menu = document.getElementById("navMenu");
+            menu.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
