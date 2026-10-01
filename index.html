@@ -259,7 +259,7 @@
             border: none;
         }
 
-        /* Catalog Grid - Mobile Friendly (2 Columns on mobile so 4 guitars fit in view) */
+        /* Catalog Grid - Mobile Friendly (2 Columns) */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -437,6 +437,33 @@
         @media(min-width: 600px) {
             .classes-grid { grid-template-columns: 1fr 1fr; }
         }
+
+        .insta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .insta-banner-link {
+            display: block;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .insta-banner-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        .insta-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
         .qr-box {
             background: #f9f9f9;
             padding: 1.5rem;
@@ -703,8 +730,11 @@
         <section id="classes">
             <h2>Guitar Classes & Inquiries</h2>
             <div class="classes-grid">
-                <div>
-                    <p style="margin-top: 0; color: #555;">Ready to start your musical journey? Connect with us through our quick inquiry form, explore instrument availability, or check out our latest student progress and video reels on Instagram.</p>
+                <div class="insta-container">
+                    <p style="margin-top: 0; color: #555;">Ready to start your musical journey? Connect with us through our quick inquiry form or check out our latest student progress and reels on Instagram!</p>
+                    <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-banner-link">
+                        <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Screenshot%202026-10-01%20011157.png?raw=true" alt="Visit Instagram Page" class="insta-banner-img">
+                    </a>
                 </div>
                 
                 <div class="qr-box">
