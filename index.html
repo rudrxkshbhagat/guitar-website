@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Let's Learn Guitar | Classes & Store</title>
 
-    <!-- Open Graph Meta Tags for WhatsApp & Social Media Thumbnails -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Let's Learn Guitar | Classes & Store">
     <meta property="og:description" content="Professional Guitar Classes and Quality Guitars in Shivalik Nagar, Haridwar. Tap to explore catalog and inquire!">
     <meta property="og:image" content="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20g1.jpg?raw=true">
@@ -31,7 +31,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Top Clean Navigation Bar with #660080 background */
+        /* Top Clean Navigation Bar */
         nav.top-bar {
             background: #660080;
             display: flex;
@@ -70,7 +70,6 @@
             border-radius: 2px;
         }
 
-        /* Functional Dropdown Menu for Mobile & Laptop */
         .nav-links {
             display: none;
             flex-direction: column;
@@ -122,7 +121,6 @@
             }
         }
 
-        /* Clickable Transparent Logo Image */
         .logo-container {
             display: flex;
             align-items: center;
@@ -208,37 +206,44 @@
             margin-top: 0; 
         }
 
-        /* About / Owner Section */
-        .about-grid {
+        /* About Section Snippet */
+        .about-snippet {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        /* YouTube Shorts Grid */
+        .shorts-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            align-items: center;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.2rem;
+            margin-top: 1rem;
         }
-        @media(min-width: 768px) {
-            .about-grid { grid-template-columns: 1fr 2fr; }
+        @media(min-width: 480px) {
+            .shorts-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        .owner-container {
-            text-align: center;
+        @media(min-width: 800px) {
+            .shorts-grid { grid-template-columns: repeat(4, 1fr); }
         }
-        .owner-photo {
-            width: 100%;
-            max-width: 220px;
-            height: auto;
-            max-height: 320px;
-            background: #eaeaea;
+
+        .short-card {
+            background: #000;
             border-radius: 12px;
-            margin: 0 auto 0.5rem;
-            display: block;
-            object-fit: contain;
-            border: 3px solid var(--primary);
+            overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            padding-top: 177.77%; /* 9:16 Aspect Ratio */
         }
-        .owner-name {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-top: 5px;
+
+        .short-card iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Catalog Grid */
@@ -333,77 +338,6 @@
             margin-top: 0.5rem;
         }
 
-        /* Instagram Thumbnail Preview Card */
-        .insta-preview-card {
-            border: 1px solid #dbdbdb;
-            border-radius: 8px;
-            background: #fff;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 1rem;
-        }
-        .insta-preview-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .insta-preview-header {
-            display: flex;
-            align-items: center;
-            padding: 10px 12px;
-            gap: 10px;
-            border-bottom: 1px solid #efefef;
-            background: #fafafa;
-        }
-        .insta-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5950 45%, #c62368 60%, #fa7e1e 90%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.8rem;
-        }
-        .insta-handle {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #262626;
-        }
-        .insta-thumbnail-container {
-            width: 100%;
-            background: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .insta-thumbnail-container img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-            display: block;
-        }
-        .insta-footer {
-            padding: 12px;
-            font-size: 0.85rem;
-            color: #666;
-            background: #fff;
-        }
-        .insta-footer strong {
-            color: #262626;
-            display: block;
-            margin-bottom: 2px;
-            font-size: 0.95rem;
-        }
-
-        /* Map Button Style */
         .map-btn {
             display: inline-block;
             background: #4285F4;
@@ -416,7 +350,6 @@
             margin-top: 0.5rem;
         }
 
-        /* Floating WhatsApp Sticker */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -437,10 +370,6 @@
         }
         .whatsapp-float:hover {
             transform: scale(1.05);
-        }
-        .whatsapp-float img {
-            width: 24px;
-            height: 24px;
         }
 
         footer {
@@ -463,16 +392,15 @@
                 <span></span>
             </button>
             <ul class="nav-links" id="navMenu">
-                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-                <li><a href="#about" onclick="toggleMenu()">About The Institute</a></li>
-                <li><a href="#catalog" onclick="toggleMenu()">Guitar Catalog</a></li>
-                <li><a href="#classes" onclick="toggleMenu()">Classes</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About The Institute</a></li>
+                <li><a href="#catalog">Guitar Catalog</a></li>
+                <li><a href="#classes">Classes</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
 
-        <!-- Clickable Transparent Logo Image -->
-        <a href="#home" class="logo-container">
+        <a href="index.html" class="logo-container">
             <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/logo%20transparent.png?raw=true" alt="Logo" class="site-logo">
         </a>
 
@@ -502,6 +430,40 @@
     </a>
 
     <div class="container">
+
+        <!-- About Overview Section with Link to Dedicated Page -->
+        <section>
+            <h2>About The Institute</h2>
+            <div class="about-snippet">
+                <p>Welcome to <strong>Let's Learn Guitar</strong>! Founded out of pure passion for music, our institute serves as both a dedicated guitar learning hub and a specialized music store located in Shivalik Nagar, Haridwar.</p>
+                <a href="about.html" class="btn">Read Full Story & Meet The Instructor →</a>
+            </div>
+        </section>
+
+        <!-- Student Performances & Reels Section -->
+        <section>
+            <h2>Student Performances & Guitar Shorts</h2>
+            <p style="color: #555; margin-bottom: 1rem;">Watch our students and instructors in action!</p>
+
+            <div class="shorts-grid">
+                <!-- Short 1 -->
+                <div class="short-card">
+                    <iframe src="https://www.youtube.com/embed/GooZTTnvFmc" title="Guitar Short 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Short 2 -->
+                <div class="short-card">
+                    <iframe src="https://www.youtube.com/embed/rfspzIMt3j4" title="Guitar Short 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Short 3 (Arnav) -->
+                <div class="short-card">
+                    <iframe src="https://www.youtube.com/embed/5iTKChJYxF4" title="Guitar Short 3 - Arnav" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Short 4 (Arnav) -->
+                <div class="short-card">
+                    <iframe src="https://www.youtube.com/embed/EsBo_bODnCw" title="Guitar Short 4 - Arnav" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
 
         <!-- Guitar Store Catalog -->
         <section id="catalog">
@@ -546,58 +508,12 @@
             </div>
         </section>
 
-        <!-- About & Owner Section with Full Uncropped Photo -->
-        <section id="about">
-            <h2>About The Institute & Owner</h2>
-            <div class="about-grid">
-                <div class="owner-container">
-                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/DPP.jpg?raw=true" alt="Rudraksh Bhagat" class="owner-photo">
-                    <div class="owner-name">Rudraksh Bhagat</div>
-                </div>
-                <div>
-                    <p><strong>Welcome to Let's Learn Guitar!</strong> Founded out of pure passion for music, our institute serves as both a dedicated guitar learning hub and a specialized music store.</p>
-                    <p><strong>Our Motive:</strong> We believe that anyone can master the fretboard with the right guidance. Alongside structured lessons tailored to every skill level, we handpick quality guitars so students and enthusiasts get the best acoustics and playability.</p>
-                    <p><strong>Location:</strong> C-27 Opposite Shiv Mandir Shivalik Nagar, Haridwar, Uttarakhand</p>
-                    
-                    <!-- Instagram Preview Card -->
-                    <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
-                        <div class="insta-preview-header">
-                            <div class="insta-avatar">IG</div>
-                            <div class="insta-handle">letslearnguitarclasses</div>
-                        </div>
-                        <div class="insta-thumbnail-container">
-                            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Screenshot%202026-10-01%20011157.png?raw=true" alt="Instagram Post Thumbnail">
-                        </div>
-                        <div class="insta-footer">
-                            <strong>Let's Learn Guitar Classes</strong>
-                            Tap to view student progress, tips, and guitar sessions on Instagram.
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
         <!-- Guitar Classes & QR Code -->
         <section id="classes">
             <h2>Guitar Classes & Inquiries</h2>
             <div class="classes-grid">
                 <div>
                     <p style="margin-top: 0; color: #555;">Ready to start your musical journey? Connect with us through our quick inquiry form, explore instrument availability, or check out our latest student progress and video reels on Instagram.</p>
-                    
-                    <!-- Instagram Preview Card for Classes Section -->
-                    <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
-                        <div class="insta-preview-header">
-                            <div class="insta-avatar">IG</div>
-                            <div class="insta-handle">letslearnguitarclasses</div>
-                        </div>
-                        <div class="insta-thumbnail-container">
-                            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Screenshot%202026-10-01%20011157.png?raw=true" alt="Instagram Post Thumbnail">
-                        </div>
-                        <div class="insta-footer">
-                            <strong>Follow us on Instagram</strong>
-                            Stay connected with our latest studio activities & reels.
-                        </div>
-                    </a>
                 </div>
                 
                 <div class="qr-box">
@@ -625,15 +541,12 @@
         <p>&copy; 2026 Let's Learn Guitar. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts for Menu Toggle & Slideshow -->
     <script>
-        // Hamburger Menu Function
         function toggleMenu() {
             let menu = document.getElementById("navMenu");
             menu.classList.toggle("show");
         }
 
-        // Slideshow Script
         let slideIndex = 0;
         showSlides();
 
@@ -650,7 +563,7 @@
             }
             slides[slideIndex-1].style.display = "block";  
             dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 4000); // Change image every 4 seconds
+            setTimeout(showSlides, 4000);
         }
 
         function currentSlide(n) {
