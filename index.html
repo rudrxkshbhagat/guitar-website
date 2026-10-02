@@ -166,6 +166,26 @@
         .slide.active {
             display: block;
         }
+        .slideshow-dots {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0,0,0,0.03);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 4px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+        }
+        .dot.active {
+            background-color: var(--primary);
+        }
 
         /* Trust Badges Bar Below Banner */
         .trust-badges-container {
@@ -416,6 +436,90 @@
             line-height: 1.3;
         }
 
+        /* QR & Classes Section */
+        .classes-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        @media(min-width: 600px) {
+            .classes-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .qr-box {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        /* Instagram Thumbnail Preview Card */
+        .insta-preview-card {
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            background: #fff;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 1rem;
+        }
+        .insta-preview-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .insta-preview-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            gap: 10px;
+            border-bottom: 1px solid #efefef;
+            background: #fafafa;
+        }
+        .insta-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5950 45%, #c62368 60%, #fa7e1e 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .insta-handle {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #262626;
+        }
+        .insta-thumbnail-container {
+            width: 100%;
+            height: 220px;
+            background: #eaeaea;
+            position: relative;
+        }
+        .insta-thumbnail-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .insta-footer {
+            padding: 12px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #fff;
+        }
+        .insta-footer strong {
+            color: #262626;
+            display: block;
+            margin-bottom: 2px;
+            font-size: 0.95rem;
+        }
+
         .store-notice {
             text-align: center;
             font-size: 0.95rem;
@@ -503,6 +607,12 @@
         <img class="slide" src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20g3.jpg?raw=true" alt="Offer Ad 2">
         <img class="slide" src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20b1.jpg?raw=true" alt="Offer Ad 3">
         <img class="slide" src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Ad%20g2.jpg?raw=true" alt="Offer Ad 4">
+    </div>
+    <div class="slideshow-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 
     <!-- Trust Features Bar -->
@@ -626,7 +736,7 @@
             </div>
         </section>
 
-        <!-- Category Banners Showcase (Restored 4 Categories) -->
+        <!-- Category Banners Showcase -->
         <section>
             <h2>Explore Categories</h2>
             <p style="color: #666; margin-top:-0.5rem; font-size: 0.9rem;">Browse our complete range of acoustic, electric, and traditional instruments in our catalog.</p>
@@ -669,35 +779,93 @@
                 </a>
             </div>
         </section>
+
+        <!-- Guitar Classes & QR Code Section -->
+        <section id="classes">
+            <h2>Guitar Classes & Inquiries</h2>
+            <div class="classes-grid">
+                <div>
+                    <p style="margin-top: 0; color: #555;">Scan the QR code or use our quick form for class admissions and instrument availability inquiries.</p>
+                    
+                    <!-- Instagram Preview Card -->
+                    <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
+                        <div class="insta-preview-header">
+                            <div class="insta-avatar">IG</div>
+                            <div class="insta-handle">letslearnguitarclasses</div>
+                        </div>
+                        <div class="insta-thumbnail-container">
+                            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Screenshot%202026-10-01%20011157.png?raw=true" alt="Instagram Post Thumbnail">
+                        </div>
+                        <div class="insta-footer">
+                            <strong>Follow us on Instagram</strong>
+                            Stay connected with our latest studio activities & reels.
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="qr-box">
+                    <h3 style="color: var(--primary); margin-top: 0;">Quick Inquiry QR Code</h3>
+                    <p style="font-size: 0.9rem;">Scan with your phone camera or click below to fill out our Google Form.</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://forms.gle/w8U1Zzk7uMf3HA4D9" alt="Google Form QR Code" style="border: 3px solid white; border-radius: 4px;">
+                    <br>
+                    <a href="https://forms.gle/w8U1Zzk7uMf3HA4D9" target="_blank" class="btn">Open Google Form</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Location Section -->
+        <section id="contact" style="margin-bottom: 0;">
+            <h2>Contact Details</h2>
+            <p><strong>Institute Name:</strong> Let's Learn Guitar</p>
+            <p><strong>Location:</strong> C-27 Opposite Shiv Mandir Shivalik Nagar, Haridwar, Uttarakhand</p>
+            <p><strong>Contact:</strong> +91 99104 44964</p>
+        </section>
+
     </div>
 
     <footer>
         <p>&copy; 2026 Let's Learn Guitar. All rights reserved.</p>
     </footer>
 
+    <!-- Scripts for Menu Toggle & Slideshow -->
     <script>
-        // Mobile Menu Toggle
         function toggleMenu() {
             let menu = document.getElementById("navMenu");
             menu.classList.toggle("show");
         }
 
-        // Automatic Slideshow Banner Script
         let slideIndex = 0;
+        showSlides();
+
         function showSlides() {
             let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
             for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");
+                slides[i].style.display = "none";  
             }
             slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1; }
-            slides[slideIndex - 1].classList.add("active");
-            setTimeout(showSlides, 3500); // Change image every 3.5 seconds
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 4000); 
         }
-        // Start slideshow on page load
-        window.onload = function() {
-            showSlides();
-        };
+
+        function currentSlide(n) {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            slideIndex = n;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex].style.display = "block";
+            dots[slideIndex].className += " active";
+        }
     </script>
 </body>
 </html>
