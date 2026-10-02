@@ -427,50 +427,6 @@
             border: 1px dashed var(--accent);
         }
 
-        /* QR & Classes Section */
-        .classes-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        @media(min-width: 600px) {
-            .classes-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        .insta-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.8rem;
-        }
-
-        .insta-banner-link {
-            display: block;
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .insta-banner-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-        }
-        .insta-banner-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-        }
-
-        .qr-box {
-            background: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            text-align: center;
-        }
         .btn {
             display: inline-block;
             background: var(--accent);
@@ -479,18 +435,6 @@
             text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
-            margin-top: 0.5rem;
-        }
-
-        .map-btn {
-            display: inline-block;
-            background: #4285F4;
-            color: white;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
             margin-top: 0.5rem;
         }
 
@@ -619,7 +563,7 @@
         <section id="catalog">
             <h2>Featured Guitars</h2>
             <div class="store-notice">
-                ℹ️️ <strong>Offline Store Policy:</strong> Direct online checkout is unavailable. Browse our featured models below or visit our full catalog for special in-store pricing!
+                ℹ <strong>Offline Store Policy:</strong> Direct online checkout is unavailable. Browse our featured models below or visit our full catalog for special in-store pricing!
             </div>
 
             <div class="catalog-grid">
@@ -682,7 +626,7 @@
             </div>
         </section>
 
-        <!-- Category Banners Showcase -->
+        <!-- Category Banners Showcase (Restored 4 Categories) -->
         <section>
             <h2>Explore Categories</h2>
             <p style="color: #666; margin-top:-0.5rem; font-size: 0.9rem;">Browse our complete range of acoustic, electric, and traditional instruments in our catalog.</p>
@@ -694,6 +638,33 @@
                     <div class="category-card-body">
                         <h4>Yamaha Guitars</h4>
                         <p>Acoustic & Electro-Acoustic</p>
+                    </div>
+                </a>
+
+                <!-- Category 2 -->
+                <a href="catalog.html" class="category-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitar%20cort%20af500c.webp?raw=true" alt="Cort & Premium Brands">
+                    <div class="category-card-body">
+                        <h4>Cort & Premium</h4>
+                        <p>Acoustic & Concert Series</p>
+                    </div>
+                </a>
+
+                <!-- Category 3 -->
+                <a href="catalog.html" class="category-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitar%20kaspar.webp?raw=true" alt="Beginner Guitars">
+                    <div class="category-card-body">
+                        <h4>Beginner Series</h4>
+                        <p>Budget-Friendly Acoustic Guitars</p>
+                    </div>
+                </a>
+
+                <!-- Category 4 -->
+                <a href="catalog.html" class="category-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitar%20ukulele.jpg?raw=true" alt="Ukuleles & Accessories">
+                    <div class="category-card-body">
+                        <h4>Ukuleles & More</h4>
+                        <p>Soprano, Concert & Strings</p>
                     </div>
                 </a>
             </div>
