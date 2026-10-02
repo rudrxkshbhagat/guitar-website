@@ -632,7 +632,7 @@
             <p style="color: #666; margin-top:-0.5rem; font-size: 0.9rem;">Browse our complete range of acoustic, electric, and traditional instruments in our catalog.</p>
             
             <div class="category-banners-grid">
-                <!-- Category 1 -->
+                <!-- Category 1: Yamaha -->
                 <a href="catalog.html" class="category-card">
                     <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitaryamaha%20fsx80c%20guitar.webp?raw=true" alt="Yamaha Guitars">
                     <div class="category-card-body">
@@ -641,27 +641,27 @@
                     </div>
                 </a>
 
-                <!-- Category 2 -->
+                <!-- Category 2: Hertz Electric -->
                 <a href="catalog.html" class="category-card">
-                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitar%20cort%20af500c.webp?raw=true" alt="Cort & Premium Brands">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20hertz%20electric.jpg?raw=true" alt="Hertz Electric Guitars">
+                    <div class="category-card-body">
+                        <h4>Hertz Electric</h4>
+                        <p>Electric & Stage Guitars</p>
+                    </div>
+                </a>
+
+                <!-- Category 3: Cort -->
+                <a href="catalog.html" class="category-card">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitar%20cort.png?raw=true" alt="Cort Guitars">
                     <div class="category-card-body">
                         <h4>Cort & Premium</h4>
                         <p>Acoustic & Concert Series</p>
                     </div>
                 </a>
 
-                <!-- Category 3 -->
+                <!-- Category 4: Ukulele -->
                 <a href="catalog.html" class="category-card">
-                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitar%20kaspar.webp?raw=true" alt="Beginner Guitars">
-                    <div class="category-card-body">
-                        <h4>Beginner Series</h4>
-                        <p>Budget-Friendly Acoustic Guitars</p>
-                    </div>
-                </a>
-
-                <!-- Category 4 -->
-                <a href="catalog.html" class="category-card">
-                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20guitar%20ukulele.jpg?raw=true" alt="Ukuleles & Accessories">
+                    <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/show%20Ukulele.webp?raw=true" alt="Ukuleles & Accessories">
                     <div class="category-card-body">
                         <h4>Ukuleles & More</h4>
                         <p>Soprano, Concert & Strings</p>
@@ -676,10 +676,28 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
         function toggleMenu() {
             let menu = document.getElementById("navMenu");
             menu.classList.toggle("show");
         }
+
+        // Automatic Slideshow Banner Script
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].classList.add("active");
+            setTimeout(showSlides, 3500); // Change image every 3.5 seconds
+        }
+        // Start slideshow on page load
+        window.onload = function() {
+            showSlides();
+        };
     </script>
 </body>
 </html>
