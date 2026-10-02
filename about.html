@@ -180,6 +180,73 @@
             line-height: 1.4;
         }
 
+        /* Instagram Thumbnail Preview Card */
+        .insta-preview-card {
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            background: #fff;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+        .insta-preview-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .insta-preview-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            gap: 10px;
+            border-bottom: 1px solid #efefef;
+            background: #fafafa;
+        }
+        .insta-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5950 45%, #c62368 60%, #fa7e1e 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .insta-handle {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #262626;
+        }
+        .insta-thumbnail-container {
+            width: 100%;
+            height: 180px;
+            background: #eaeaea;
+            position: relative;
+        }
+        .insta-thumbnail-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .insta-footer {
+            padding: 12px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #fff;
+        }
+        .insta-footer strong {
+            color: #262626;
+            display: block;
+            margin-bottom: 2px;
+            font-size: 0.95rem;
+        }
+
         .btn-back {
             display: inline-block;
             background: var(--primary);
@@ -239,10 +306,28 @@
                         MA Psychology<br>
                         D. Sound Engineering
                     </div>
+
+                    <!-- Instagram Preview Card in About Page -->
+                    <a href="https://www.instagram.com/letslearnguitarclasses" target="_blank" class="insta-preview-card">
+                        <div class="insta-preview-header">
+                            <div class="insta-avatar">IG</div>
+                            <div class="insta-handle">letslearnguitarclasses</div>
+                        </div>
+                        <div class="insta-thumbnail-container">
+                            <img src="https://github.com/rudrxkshbhagat/guitar-website/blob/main/Screenshot%202026-10-01%20011157.png?raw=true" alt="Instagram Post Thumbnail">
+                        </div>
+                        <div class="insta-footer">
+                            <strong>Follow us on Instagram</strong>
+                            Explore student progress & studio reels.
+                        </div>
+                    </a>
                 </div>
+
                 <div>
-                    <h2>Our Mission</h2>
-                    <p>At <strong>Let's Learn Guitar</strong>, we believe everyone has music inside them waiting to be unlocked. Located in Shivalik Nagar, Haridwar, we offer structured guitar lessons for beginners to advanced players along with high-grade instruments tested personally by musicians.</p>
+                    <h2>Professional Guitar Education & Training</h2>
+                    <p>At <strong>Let's Learn Guitar</strong>, located in the heart of Shivalik Nagar, Haridwar, we offer professional, structured, and goal-oriented guitar programs designed for aspiring musicians of all proficiency levels.</p>
+                    <p>Led by <strong>Rudraksh Bhagat</strong>, our teaching methodology combines comprehensive technical ear training, fretboard geometry, chord theory, and practical performance skills. Whether you are picking up a guitar for the first time or refining advanced fingerstyle and rhythm arrangements, our curriculum provides personalized attention to foster true artistic growth.</p>
+                    <p>In addition to instruction, our facility functions as a trusted music store offering hand-inspected, high-grade acoustic, electric, and traditional instruments tested personally by musicians to ensure optimal playability and tone.</p>
                 </div>
             </div>
         </section>
